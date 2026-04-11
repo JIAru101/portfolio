@@ -13,147 +13,110 @@
     --ink-muted: #9CA3AF; 
     --bg: #F4F5F8;
     --surface: #FFFFFF;   
-    
     --grad-1: #4F46E5;    
     --grad-2: #EC4899;    
     --accent-grad: linear-gradient(135deg, var(--grad-1) 0%, var(--grad-2) 100%);
     --tag-bg-grad: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(236, 72, 153, 0.08) 100%);
-    
     --sans: 'Poppins', 'Noto Sans SC', system-ui, sans-serif;
   }
   
   html { scroll-behavior: smooth; }
-  
-  body { 
-    font-family: var(--sans);
-    background: var(--bg); 
-    color: #111827; 
-    font-size: 16px; 
-    line-height: 1.6; 
-    overflow-x: hidden; 
-    position: relative;
-  }
-  body::before { 
-    content: ''; position: absolute; top: -5%; left: -10%; width: 60vw; height: 60vw;
-    background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, transparent 70%); 
-    z-index: -1; pointer-events: none;
-  }
-  body::after { 
-    content: ''; position: absolute; top: 25%; right: -10%; width: 50vw; height: 50vw;
-    background: radial-gradient(circle, rgba(236, 72, 153, 0.06) 0%, transparent 70%); 
-    z-index: -1; pointer-events: none;
-  }
+  body { font-family: var(--sans); background: var(--bg); color: #111827; line-height: 1.6; overflow-x: hidden; }
 
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1rem 4rem; background: rgba(255,255,255,0.9); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.03); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1rem 4rem; background: rgba(255,255,255,0.9); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.03); }
   .nav-logo { font-size: 1.3rem; font-weight: 700; text-decoration: none; letter-spacing: 0.05em; background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .nav-links { display: flex; gap: 3rem; list-style: none; }
-  .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--ink-2); text-decoration: none; transition: color 0.2s, transform 0.2s; display: inline-block; }
-  .nav-links a:hover { color: var(--grad-1); transform: translateY(-1px); }
+  .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--ink-2); text-decoration: none; transition: color 0.2s; }
 
-  .hero { min-height: 100vh; display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; padding: 8rem 4rem 4rem; gap: 5rem; max-width: 1400px; margin: 0 auto; }
-  .hero-eyebrow { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; margin-bottom: 1.5rem; text-transform: uppercase; background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent; display: flex; align-items: center; gap: 0.75rem;}
-  .hero-eyebrow::before { content: ''; display: block; width: 30px; height: 2px; background: var(--accent-grad); border-radius: 2px; }
-  .hero h1 { font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 2rem; color: #111827; }
-  .hero h1 span { background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .hero-sub { font-size: 1.15rem; color: var(--ink-2); max-width: 520px; line-height: 1.8; margin-bottom: 3.5rem; font-weight: 300; }
-  .hero-cta { display: inline-flex; align-items: center; justify-content: center; padding: 1.2rem 3rem; background: var(--accent-grad); color: white; text-decoration: none; font-size: 1rem; font-weight: 600; border-radius: 50px; box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3); transition: all 0.3s; }
-  .hero-cta:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 40px rgba(79, 70, 229, 0.4); }
+  /* 首图区域 */
+  .hero { padding: 8rem 0 10px; max-width: 1060px; margin: 0 auto; display: flex; justify-content: center; }
+  .hero-visual { width: 100%; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); }
+  .hero-visual img { width: 100%; height: auto; display: block; }
+
+  /* Section 间距：红色/黄色标注区域不超过 20px */
+  section { padding: 10px 0 20px; max-width: 1060px; margin: 0 auto; }
   
-  .hero-visual { position: relative; display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-end; }
-  .hero-card { background: var(--surface); border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 15px 50px rgba(0,0,0,0.04); border-radius: 20px; padding: 2rem; width: 85%; animation: float 6s ease-in-out infinite; }
-  .hero-card:nth-child(2) { width: 75%; animation-delay: -2s; border-left: 4px solid var(--grad-1); }
-  .hero-card:nth-child(3) { width: 95%; animation-delay: -4s; border-right: 4px solid var(--grad-2); }
-  @keyframes float { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(1deg); } }
-  .card-label { font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; }
-  .card-title { font-size: 1.25rem; font-weight: 600; color: #111827; }
-  .card-tags { display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap; }
-  .card-tag { font-size: 0.75rem; font-weight: 500; padding: 6px 14px; background: var(--tag-bg-grad); border-radius: 50px; color: var(--grad-1); border: 1px solid rgba(79, 70, 229, 0.1); }
-
-  section { padding: 8rem 4rem; max-width: 1060px; margin: 0 auto; }
+  /* 简历板 */
+  .resume-board { 
+    background: var(--surface); 
+    border-radius: 30px;
+    padding: 4rem 5rem; 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.02); 
+    border: 1px solid rgba(0,0,0,0.04);
+    margin-bottom: 60px;
+    /* 拉开与作品集的呼吸感 */
+  }
   
-  .resume-board { background: var(--surface); border-radius: 30px; padding: 5rem 6rem; box-shadow: 0 20px 60px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04); }
-  .board-section { margin-bottom: 4rem; }
-  .board-section:last-child { margin-bottom: 0; }
-  .board-title { font-size: 1.4rem; font-weight: 700; color: #111827; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 0.75rem; }
-  .board-title::before { content: ''; display: block; width: 20px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
+  .profile-header { margin-bottom: 2.5rem; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 2.5rem; }
+  .profile-header h2 { font-size: 2.5rem; font-weight: 700; color: #111827; margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+  .profile-info { display: flex; gap: 1.5rem; align-items: center; margin-bottom: 1rem; }
+  .profile-tag { font-size: 1rem; color: var(--grad-1); font-weight: 600; }
+  .profile-edu-box { display: flex; align-items: center; gap: 0.8rem; color: var(--ink-2); font-size: 0.95rem; }
+  .profile-edu-label { font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; background: #F3F4F6; padding: 2px 8px; border-radius: 4px; }
 
+  .board-section { margin-bottom: 3rem; }
+  .board-title { font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .board-title::before { content: ''; display: block; width: 16px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
   .about-text { font-size: 1.05rem; font-weight: 300; color: var(--ink-2); line-height: 1.9; }
-  .about-text p { margin-bottom: 1rem; }
-  .about-text p:last-child { margin-bottom: 0; }
   .about-text strong { color: #111827; font-weight: 600; }
 
-  .board-divider { height: 1px; background: repeating-linear-gradient(to right, rgba(0,0,0,0.05) 0, rgba(0,0,0,0.05) 8px, transparent 8px, transparent 16px); margin: 4rem 0; border: none; }
-
-  .exp-list-new { display: flex; flex-direction: column; gap: 3rem; }
-  .exp-item-new { position: relative; padding-left: 2rem; }
-  .exp-item-new::before { content: ''; position: absolute; left: 4px; top: 10px; bottom: -3rem; width: 2px; background: rgba(79, 70, 229, 0.1); }
+  /* 工作经历列表 */
+  .exp-list-new { display: flex; flex-direction: column; gap: 2.5rem; }
+  .exp-item-new { position: relative; padding-left: 1.8rem; }
+  .exp-item-new::before { content: ''; position: absolute; left: 4px; top: 10px; bottom: -2.5rem; width: 1px; background: rgba(79, 70, 229, 0.15); }
   .exp-item-new:last-child::before { display: none; }
-  .exp-item-new::after { content: ''; position: absolute; left: -1px; top: 6px; width: 12px; height: 12px; background: var(--surface); border: 3px solid var(--grad-1); border-radius: 50%; box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
-  .exp-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 1rem; }
-  .exp-company-new { font-size: 1.3rem; font-weight: 700; color: #111827; }
-  .exp-date-new { font-size: 0.85rem; font-weight: 600; color: var(--grad-1); background: var(--tag-bg-grad); padding: 4px 14px; border-radius: 50px; letter-spacing: 0.05em; }
-  .exp-role-new { font-size: 1rem; font-weight: 600; color: var(--grad-2); margin-bottom: 1.2rem; }
-  .exp-points-new { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
-  .exp-points-new li { font-size: 1rem; font-weight: 300; color: var(--ink-2); line-height: 1.8; position: relative; padding-left: 1.2rem; }
-  .exp-points-new li::before { content: '·'; position: absolute; left: 0; top: -2px; font-size: 1.8rem; font-weight: 700; color: var(--ink-muted); line-height: 1; }
+  .exp-item-new::after { content: ''; position: absolute; left: 0; top: 7px; width: 9px; height: 9px; background: var(--surface); border: 2.5px solid var(--grad-1); border-radius: 50%; }
+  .exp-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem; flex-wrap: wrap; gap: 0.8rem; }
+  .exp-company-new { font-size: 1.2rem; font-weight: 700; color: #111827; }
+  .exp-date-new { font-size: 0.8rem; font-weight: 600; color: var(--grad-1); background: var(--tag-bg-grad); padding: 3px 12px; border-radius: 50px; }
+  .exp-role-new { font-size: 0.95rem; font-weight: 600; color: var(--grad-2); margin-bottom: 0.8rem; }
+  .exp-points-new { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .exp-points-new li { font-size: 0.95rem; font-weight: 300; color: var(--ink-2); line-height: 1.7; position: relative; padding-left: 1.2rem; }
+  .exp-points-new li::before { content: '·'; position: absolute; left: 0; top: -1px; font-size: 1.5rem; color: var(--ink-muted); }
 
-  .section-num { font-size: 0.9rem; font-weight: 700; color: var(--grad-2); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; text-transform: uppercase; }
-  .section-title { font-size: clamp(2.5rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 4rem; color: #111827; position: relative; display: inline-block;}
-  .section-title::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 60px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
+  /* 标题对齐优化 */
+  .section-num { font-size: 0.85rem; font-weight: 700; color: var(--grad-2); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; padding-left: 50px; }
+  .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 20px; color: #111827; position: relative; display: inline-block; padding-left: 50px; }
+  .section-title::after { content: ''; position: absolute; left: 50px; bottom: -8px; width: 50px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
 
-  .works-single-column { display: flex; flex-direction: column; gap: 4rem; max-width: 100%; margin: 0 auto; }
-  .work-item { display: flex; flex-direction: column; width: 100%; background: var(--surface); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 8px 30px rgba(0,0,0,0.03); transition: transform 0.3s;}
+  /* 作品集间距设定 */
+  .works-single-column { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+  .series-gap { margin-top: 60px !important; }
+
+  .work-item { display: flex; flex-direction: column; background: var(--surface); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 8px 30px rgba(0,0,0,0.02); transition: transform 0.3s; }
   .work-item:hover { transform: translateY(-5px); }
-  
-  .work-thumb { width: 100%; height: auto; overflow: hidden; border-bottom: 1px solid rgba(0,0,0,0.03); background: #F3F4F6; }
-  .work-thumb img { width: 100%; height: auto; display: block; object-fit: contain; transition: transform 0.5s; }
-  .work-item:hover .work-thumb img { transform: scale(1.03); }
+  .work-thumb { width: 100%; background: #F3F4F6; }
+  .work-thumb img { width: 100%; height: auto; display: block; }
+  .work-body { padding: 1.8rem; }
+  .work-num-box { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.8rem; }
+  .work-num { font-size: 0.75rem; font-weight: 700; color: white; background: var(--accent-grad); padding: 2px 8px; border-radius: 4px;}
+  .work-tag-main { font-size: 0.75rem; font-weight: 600; color: var(--grad-1); text-transform: uppercase;}
+  .work-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.6rem; color: #111827; }
+  .work-desc { font-size: 0.95rem; color: var(--ink-2); font-weight: 300; line-height: 1.7; margin-bottom: 1.2rem;}
+  .work-foot { padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.03); display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .wtag { font-size: 0.7rem; font-weight: 500; padding: 4px 12px; background: #F3F4F6; border-radius: 50px; color: var(--ink-2); }
 
-  /* 新增：Before/After 左右分栏精修排版专属 CSS */
+  /* 新增：精修对比排版专属 CSS */
   .split-view { display: flex; gap: 2px; background: #fff; padding: 2px; }
   .split-pane { flex: 1; position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: #fafafa;}
   .split-pane img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .lbl-before { position: absolute; top: 12px; left: 12px; background: rgba(17, 24, 39, 0.7); color: #fff; padding: 4px 10px; font-size: 0.75rem; font-weight: 600; border-radius: 4px; backdrop-filter: blur(4px); z-index: 2; }
   .lbl-after { position: absolute; top: 12px; right: 12px; background: var(--accent-grad); color: #fff; padding: 4px 10px; font-size: 0.75rem; font-weight: 600; border-radius: 4px; box-shadow: 0 4px 10px rgba(236, 72, 153, 0.3); z-index: 2; }
 
-  .work-body { padding: 1.8rem; }
-  .work-num-box { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-  .work-num { font-size: 0.8rem; font-weight: 700; color: white; background: var(--accent-grad); padding: 2px 8px; border-radius: 4px;}
-  .work-tag-main { font-size: 0.8rem; font-weight: 600; color: var(--grad-1); text-transform: uppercase;}
-  .work-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; color: #111827; line-height: 1.3;}
-  .work-desc { font-size: 0.95rem; color: var(--ink-2); font-weight: 300; line-height: 1.7; margin-bottom: 1.5rem;}
-  .work-foot { padding-top: 1.2rem; border-top: 1px solid rgba(0,0,0,0.03); display: flex; gap: 0.6rem; flex-wrap: wrap; }
-  .wtag { font-size: 0.75rem; font-weight: 500; padding: 6px 14px; background: #F3F4F6; border-radius: 50px; color: var(--ink-2); }
+  /* 联系合作对齐修正 */
+  .contact-info-text { padding-left: 50px; color: var(--ink-2); margin-bottom: 1.5rem; }
+  .contact-links-box { padding-left: 50px; display: flex; gap: 3rem; flex-wrap: wrap; }
+  .contact-link-item { font-size: 1.1rem; color: #111827; font-weight: 600; }
 
-  .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: start; background: linear-gradient(135deg, #ffffff 0%, rgba(79, 70, 229, 0.03) 100%); padding: 5rem; border-radius: 30px; box-shadow: 0 20px 70px rgba(0,0,0,0.04); border: 1px solid rgba(79, 70, 229, 0.08); }
-  .contact-intro { font-size: 1.3rem; font-weight: 300; color: var(--ink-2); line-height: 1.8; margin-bottom: 3rem; }
-  .contact-intro strong { color: #111827; font-weight: 600; background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent;}
-  .contact-items { display: flex; flex-direction: column; gap: 2rem; }
-  .contact-item { display: flex; align-items: center; gap: 1.25rem; font-size: 1rem; color: #111827; font-weight: 500;}
-  .ci-icon { width: 3rem; height: 3rem; background: var(--tag-bg-grad); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: var(--grad-1); font-weight: 700; border: 1px solid rgba(79, 70, 229, 0.05);}
-  
-  .form { display: flex; flex-direction: column; gap: 1.5rem; }
-  .form label { font-size: 0.85rem; font-weight: 600; color: #111827; display: block; margin-bottom: 0.6rem; letter-spacing: 0.05em;}
-  .form input, .form textarea { width: 100%; padding: 1.2rem; border: 1px solid #E5E7EB; border-radius: 12px; background: #FAFAFB; font-family: var(--sans); font-size: 1rem; color: #111827; outline: none; }
-  .form textarea { height: 180px; resize: vertical; }
-  .form-btn { align-self: flex-start; padding: 1.2rem 3.5rem; background: var(--accent-grad); color: white; border: none; border-radius: 50px; font-weight: 600; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 25px rgba(79, 70, 229, 0.25); }
+  footer { text-align: center; padding: 4rem 2rem; font-size: 0.85rem; color: var(--ink-muted); }
 
-  footer { text-align: center; padding: 4rem 2rem; font-size: 0.9rem; color: var(--ink-muted); border-top: 1px solid rgba(0,0,0,0.02); margin-top: 2rem;}
-  .fade-in { opacity: 1; transform: none; }
-
-  @media (max-width: 1100px) {
-    .hero { grid-template-columns: 1fr; gap: 3rem; padding: 10rem 2rem 4rem; text-align: center; }
-    .hero-visual { display: none; }
-    .hero-eyebrow { justify-content: center; }
-    .hero-sub { margin: 0 auto 3.5rem; }
-    nav { padding: 1rem 2rem; }
-    .contact-grid { grid-template-columns: 1fr; gap: 4rem; padding: 3rem; }
-  }
   @media (max-width: 768px) {
-    section { padding: 5rem 2rem; }
-    .works-single-column { max-width: 100%; gap: 2.5rem; } 
-    .resume-board { padding: 3rem 2rem; border-radius: 20px; }
-    .exp-header-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    section, .hero { padding: 2rem 1.2rem; }
+    .resume-board { padding: 2.5rem 1.5rem; margin-bottom: 40px; }
+    .section-num, .section-title { padding-left: 0; }
+    .section-title::after { left: 0; }
+    .contact-info-text, .contact-links-box { padding-left: 0; }
+    .profile-info { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     .split-view { flex-direction: column; } /* 手机端改为上下对比 */
   }
 </style>
@@ -170,78 +133,52 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-text fade-in">
-    <div class="hero-eyebrow">Visual Designer / E-commerce Expert</div>
-    <h1>让每一张图<br>都<span>开口说话</span></h1>
-    <p class="hero-sub">专注高转化率电商视觉全案设计，精通多品类（3C、家居、快消）产品表现。擅长亚马逊 A+ 页面策划与 AIGC 工作流，打造极具溢价感的商业视觉。</p>
-    <a class="hero-cta" href="#works">Explore my Portfolio</a>
-  </div>
-  <div class="hero-visual fade-in">
-    <div class="hero-card">
-      <div class="card-label">CURRENT ROLE</div>
-      <div class="card-title">视觉设计操刀</div>
-      <div class="card-tags"><span class="card-tag">国内电商主图</span><span class="card-tag">亚马逊 A+</span><span class="card-tag">AIGC辅助设计</span></div>
-    </div>
-    <div class="hero-card">
-      <div class="card-label">CORE TOOLS</div>
-      <div class="card-title">C4D/Blender · PS/AI · MJ/SD</div>
-      <div class="card-tags"><span class="card-tag">商业精修</span><span class="card-tag">3D建模渲染</span><span class="card-tag">高点击图排版</span></div>
-    </div>
-  </div>
+  <div class="hero-visual"><img src="封面 拷贝.jpg" alt="封面"></div>
 </div>
 
 <section id="resume">
-  <div class="resume-board fade-in">
-    <div class="board-section">
-      <div class="board-title">关于我</div>
-      <div class="about-text">
-        <p>你好，我是 <strong>林佳茹</strong>。我是一名不仅追求视觉“精美”，更追求电商“转化率”的视觉设计师。</p>
-        <p>拥有丰富的全品类设计经验，无论是<strong>亚马逊跨境电商的 3C 电子、家居清洁设备</strong>，还是<strong>国内天猫/淘宝的快消品</strong>，我都能准确提炼核心卖点。我不仅精通 PS、AI 等工具进行商业精修，更具备跨平台 A+ 页面排版、场景合成、以及多品牌广告 Banner 的视觉策划能力。</p>
-        <p>此外，我善于利用 AIGC 技术深度重构商业设计流，用更高效的方式产出具有高级感和溢价感的视觉方案。</p>
+  <div class="resume-board">
+    <div class="profile-header">
+      <h2>林佳茹</h2>
+      <div class="profile-info">
+        <div class="profile-tag">电商视觉设计师 · 24 岁</div>
+        <div class="profile-edu-box">
+          <span class="profile-edu-label">教育背景</span>
+          <span>汕头职业技术学院 · 数字媒体应用技术 (2020.09 - 2022.07)</span>
+        </div>
       </div>
     </div>
-
-    <hr class="board-divider">
-
+    <div class="board-section">
+      <div class="board-title">个人简介</div>
+      <div class="about-text">
+        <p>熟悉 <strong>AI 图片生成技术</strong>，对 AIGC 在电商视觉中的应用有独立见解。精通各类设计软件，能独立完成店铺视觉优化与整体风格设计。</p>
+        <p>作品涵盖：<strong>店铺装修、海报、主图、详情页、SKU、车图</strong> 等电商全链路视觉。具备视频剪辑与视觉整合能力，画面表现力强，创意思维灵活，善于结合新技术提升作品质感。</p>
+      </div>
+    </div>
+    <hr style="height: 1px; background: rgba(0,0,0,0.05); border: none; margin: 2rem 0;">
     <div class="board-section">
       <div class="board-title">工作经历</div>
       <div class="exp-list-new">
         <div class="exp-item-new">
-          <div class="exp-header-row">
-            <div class="exp-company-new">汕头千汇贸易有限公司</div>
-            <div class="exp-date-new">2025.02 — 至今</div>
-          </div>
+          <div class="exp-header-row"><div class="exp-company-new">汕头千汇贸易有限公司</div><div class="exp-date-new">2025.02 — 至今</div></div>
           <div class="exp-role-new">电商视觉设计师</div>
           <ul class="exp-points-new">
-            <li>负责淘宝、天猫、阿里巴巴等多店铺整体视觉设计，能根据不同平台的视觉规范进行内容适配与风格延展，涵盖主图、详情页等创意落地。</li>
-            <li>独立完成产品拍摄、图片修饰及详情页设计，拥有从拍摄到成片的完整视觉输出能力。</li> 
-            <li>灵活运用 AIGC 进行设计辅助，提升视觉画面表现力与工作效率。</li> 
+            <li>负责淘宝、天猫、阿里巴巴等多店铺整体视觉设计，涵盖主图、详情页等创意落地。</li>
+            <li>独立完成产品拍摄、图片修饰及详情页设计，具备完整视觉输出能力。</li> 
           </ul>
         </div>
-        
         <div class="exp-item-new">
-          <div class="exp-header-row">
-            <div class="exp-company-new">博易实业（深圳）有限公司</div>
-            <div class="exp-date-new">2022.11 — 2024.12</div>
-          </div>
+          <div class="exp-header-row"><div class="exp-company-new">博易实业（深圳）有限公司</div><div class="exp-date-new">2022.11 — 2024.12</div></div>
           <div class="exp-role-new">视觉美工</div>
           <ul class="exp-points-new">
-            <li>主导公司市场部门展会、海报等物料设计。优化商业合作 PPT 模版，助力签约率提升。</li>
-            <li>负责部分产品拍摄，处理各部门图片，改进视觉效果。</li>
-            <li>协助市场数据收集与分析，核销市场推广费用。</li>
+            <li>主导市场物料与 PPT 模版设计。负责产品拍摄与图片效果改进。</li>
           </ul>
         </div>
-        
         <div class="exp-item-new">
-          <div class="exp-header-row">
-            <div class="exp-company-new">深圳矩焦有限公司</div>
-            <div class="exp-date-new">2022.03 — 2022.09</div>
-          </div>
+          <div class="exp-header-row"><div class="exp-company-new">深圳矩焦有限公司</div><div class="exp-date-new">2022.03 — 2022.09</div></div>
           <div class="exp-role-new">跨境电商美工</div>
           <ul class="exp-points-new">
-            <li>主要负责亚马逊平台销售的产品广告投放图，提升产品点击率和转化率。</li>
-            <li>制作壳站替换图，优化站内图片，根据运营需求持续改进，促进销售额增长。</li>
-            <li>剪辑和制作各类目标产品视频素材，增强营销效果。</li>
+            <li>主要负责亚马逊产品广告投放图，提升点击率与转化率。</li>
           </ul>
         </div>
       </div>
@@ -250,31 +187,75 @@
 </section>
 
 <section id="works">
-  <div class="section-num">03</div>
-  <div class="section-title">精选作品集</div>
-  
-  <div class="works-single-column fade-in">
-
-    <div class="work-item">
-      <div class="work-thumb split-view">
-        <div class="split-pane">
-          <div class="lbl-before">Before (原图)</div>
-          <img src="洗洁精.jpg" alt="洗洁精原图">
-        </div>
-        <div class="split-pane">
-          <div class="lbl-after">After (精修)</div>
-          <img src="洗洁精精修-棚拍版.jpg" alt="洗洁精精修">
-        </div>
-      </div>
+  <div class="section-num">03</div><div class="section-title">精选作品集</div>
+  <div class="works-single-column">
+    <a class="work-item" href="纸巾作品集22 拷贝.jpg" target="_blank">
+      <div class="work-thumb"><img src="纸巾作品集22 拷贝.jpg"></div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">01</span><span class="work-tag-main">专业级商业精修</span></div>
-        <div class="work-title">日化洗洁精 - 场景提炼与光影重塑</div>
-        <div class="work-desc">将极其杂乱的户外随手拍原图，通过去除环境杂色、重构瓶身结构与渲染高光，彻底还原出棚拍级的高级质感，大幅提升快消品溢价感。</div>
-        <div class="work-foot"><span class="wtag">去环境光</span><span class="wtag">结构校准</span><span class="wtag">高光重塑</span></div>
+        <div class="work-num-box"><span class="work-num">01</span><span class="work-tag-main">AIGC 详情页全案</span></div>
+        <div class="work-title">商务抽纸 - AIGC 视觉重塑</div>
+        <div class="work-desc">运用 AIGC 打破实拍限制，构建清新自然的商业空间。</div>
+        <div class="work-foot"><span class="wtag">场景构建</span><span class="wtag">转化逻辑</span></div>
       </div>
-    </div>
+    </a>
+    <a class="work-item" href="除胶剂作品集22 拷贝.jpg" target="_blank">
+      <div class="work-thumb"><img src="除胶剂作品集22 拷贝.jpg"></div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">02</span><span class="work-tag-main">3D & AI 融合</span></div>
+        <div class="work-title">强力除胶剂 - AI 光影重塑商业视觉</div>
+        <div class="work-desc">利用 AI 光影重塑 3D 质感，梳理“痛点-信任-转化”逻辑。</div>
+        <div class="work-foot"><span class="wtag">光影重构</span><span class="wtag">AIGC合成</span></div>
+      </div>
+    </a>
 
-    <div class="work-item">
+    <a class="work-item series-gap" href="广告投放图1 拷贝.jpg" target="_blank">
+      <div class="work-thumb"><img src="广告投放图1 拷贝.jpg"></div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">03</span><span class="work-tag-main">高点击广告图</span></div>
+        <div class="work-title">多品牌联合 - 跨境电商 Banner 设计</div>
+        <div class="work-desc">涵盖墨镜、珠宝等，采用冲击力构图精准吸引目标客群。</div>
+        <div class="work-foot"><span class="wtag">CTR 优化</span></div>
+      </div>
+    </a>
+
+    <a class="work-item series-gap" href="亚马逊1 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb"><img src="亚马逊1 拷贝 2.jpg"></div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">04</span><span class="work-tag-main">亚马逊 A+ 设计</span></div>
+        <div class="work-title">食品温度计 - 卖点呈现</div>
+        <div class="work-desc">场景合成拆解核心功能。</div>
+        <div class="work-foot"><span class="wtag">卖点可视化</span></div>
+      </div>
+    </a>
+    <a class="work-item" href="亚马逊2 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb"><img src="亚马逊2 拷贝 2.jpg"></div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">05</span><span class="work-tag-main">A+ 科技产品</span></div>
+        <div class="work-title">泳池机器人 - 视觉排版</div>
+        <div class="work-desc">科技感背书与智能卖点。</div>
+        <div class="work-foot"><span class="wtag">痛点对比</span></div>
+      </div>
+    </a>
+    <a class="work-item" href="亚马逊4 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb"><img src="亚马逊4 拷贝 2.jpg"></div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">06</span><span class="work-tag-main">家居类 A+</span></div>
+        <div class="work-title">双层沥水架 - 空间展示</div>
+        <div class="work-desc">透视角度展现大容量。</div>
+        <div class="work-foot"><span class="wtag">层级梳理</span></div>
+      </div>
+    </a>
+    <a class="work-item" href="亚马逊5 拷贝 2.jpg" target="_blank">
+      <div class="work-thumb"><img src="亚马逊5 拷贝 2.jpg"></div>
+      <div class="work-body">
+        <div class="work-num-box"><span class="work-num">07</span><span class="work-tag-main">3C 数码 A+</span></div>
+        <div class="work-title">Power Bank - 大容量快充充电宝性能分解</div>
+        <div class="work-desc">极简灰科技风呈现数据。</div>
+        <div class="work-foot"><span class="wtag">数据可视化</span></div>
+      </div>
+    </a>
+
+    <div class="work-item series-gap">
       <div class="work-thumb split-view">
         <div class="split-pane">
           <div class="lbl-before">Before (原图)</div>
@@ -286,10 +267,10 @@
         </div>
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">02</span><span class="work-tag-main">3C 数码材质精修</span></div>
-        <div class="work-title">电竞鼠标 - AIGC 辅助材质强化</div>
+        <div class="work-num-box"><span class="work-num">08</span><span class="work-tag-main">3C 数码材质精修</span></div>
+        <div class="work-title">电竞鼠标 - 材质强化与光影重构</div>
         <div class="work-desc">修复实拍中暗沉且粗糙的塑料材质缺陷，利用材质分离与光影重构技术，打造出细腻的金属光泽与电竞科技感。</div>
-        <div class="work-foot"><span class="wtag">材质打磨</span><span class="wtag">AIGC 辅助</span><span class="wtag">细节锐化</span></div>
+        <div class="work-foot"><span class="wtag">材质打磨</span><span class="wtag">光影重构</span></div>
       </div>
     </div>
 
@@ -297,18 +278,18 @@
       <div class="work-thumb split-view">
         <div class="split-pane">
           <div class="lbl-before">Before (原图)</div>
-          <img src="护肤品.jpg" alt="护肤品原图">
+          <img src="护肤品 拷贝.jpg" alt="护肤品原图">
         </div>
         <div class="split-pane">
           <div class="lbl-after">After (精修)</div>
-          <img src="护肤品.png" alt="护肤品精修">
+          <img src="护肤品 拷贝 2.png" alt="护肤品精修">
         </div>
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">03</span><span class="work-tag-main">美妆护肤质感塑造</span></div>
+        <div class="work-num-box"><span class="work-num">09</span><span class="work-tag-main">美妆护肤质感塑造</span></div>
         <div class="work-title">美白护手霜 - 剔透感与高级氛围调色</div>
-        <div class="work-desc">修正原图偏暗发灰的色调，强化管身的高级磨砂质感与底部亚克力底座的通透折射率，营造专柜级的高级商业氛围。</div>
-        <div class="work-foot"><span class="wtag">色彩校准</span><span class="wtag">材质提亮</span><span class="wtag">通透感强化</span></div>
+        <div class="work-desc">修正原图偏暗发灰的色调，强化管身的高级磨砂质感，营造专柜级的高级商业氛围。</div>
+        <div class="work-foot"><span class="wtag">色彩校准</span><span class="wtag">材质提亮</span></div>
       </div>
     </div>
 
@@ -324,10 +305,10 @@
         </div>
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">04</span><span class="work-tag-main">玻璃液体材质精修</span></div>
+        <div class="work-num-box"><span class="work-num">10</span><span class="work-tag-main">玻璃液体材质精修</span></div>
         <div class="work-title">电热蚊香液 - 玻璃通透感重塑</div>
-        <div class="work-desc">解决实拍玻璃瓶身高光杂乱、内部液体浑浊沉闷的痛点。通过精确的结构线勾勒与液体重绘，呈现极致干净、通透的视觉体验。</div>
-        <div class="work-foot"><span class="wtag">液体重绘</span><span class="wtag">透视校正</span><span class="wtag">干净度提升</span></div>
+        <div class="work-desc">解决实拍玻璃瓶身高光杂乱、内部液体浑浊沉闷的痛点。呈现极致干净、通透的视觉体验。</div>
+        <div class="work-foot"><span class="wtag">液体重绘</span><span class="wtag">透视校正</span></div>
       </div>
     </div>
 
@@ -339,142 +320,58 @@
         </div>
         <div class="split-pane">
           <div class="lbl-after">After (精修)</div>
-          <img src="尘推精修棚拍无阴影版.png" alt="尘推精修">
+          <img src="尘推精修棚拍无阴影版.jpg" alt="尘推精修">
         </div>
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">05</span><span class="work-tag-main">家居百货抠图与精修</span></div>
+        <div class="work-num-box"><span class="work-num">11</span><span class="work-tag-main">家居百货精修抠图</span></div>
         <div class="work-title">商用尘推 - 结构校准与杂质剥离</div>
-        <div class="work-desc">从极其杂乱的工厂实拍背景中完美剥离主体，彻底校准产品透视形变，修复金属杆氧化与布料暗沉，输出干净整洁的电商展示白底图。</div>
-        <div class="work-foot"><span class="wtag">复杂抠图</span><span class="wtag">形变校准</span><span class="wtag">布料纹理修复</span></div>
+        <div class="work-desc">从极其杂乱的实拍背景中完美剥离主体，彻底校准产品透视形变，输出干净整洁的电商展示白底图。</div>
+        <div class="work-foot"><span class="wtag">复杂抠图</span><span class="wtag">形变校准</span></div>
       </div>
     </div>
-
-    <a class="work-item" href="纸巾作品集22 拷贝.jpg" target="_blank">
-      <div class="work-thumb"><img src="纸巾作品集22 拷贝.jpg" alt="AIGC纸巾详情页设计"></div>
+    <a class="work-item series-gap" href="未标题-3.jpg" target="_blank">
+      <div class="work-thumb"><img src="未标题-3.jpg"></div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">06</span><span class="work-tag-main">AIGC 详情页全案</span></div>
-        <div class="work-title">商务抽纸 - AIGC 视觉重塑</div>
-        <div class="work-desc">运用 AIGC 打破低质量实拍限制，构建清新自然的商业空间，提升产品溢价感。</div>
-        <div class="work-foot"><span class="wtag">场景构建</span><span class="wtag">转化逻辑</span></div>
+        <div class="work-num-box"><span class="work-num">12</span><span class="work-tag-main">淘宝天猫主图</span></div>
+        <div class="work-title">84消毒液 - 场景营造</div>
+        <div class="work-desc">温馨家庭背景与除菌卖点。</div>
+        <div class="work-foot"><span class="wtag">场景合成</span></div>
       </div>
     </a>
-
-    <a class="work-item" href="除胶剂作品集22 拷贝.jpg" target="_blank">
-      <div class="work-thumb"><img src="除胶剂作品集22 拷贝.jpg" alt="AIGC强力除胶剂详情页"></div>
-      <div class="work-body">
-        <div class="work-num-box"><span class="work-num">07</span><span class="work-tag-main">3D & AI 融合全案</span></div>
-        <div class="work-title">强力除胶剂 - AI 光影重塑商业视觉</div>
-        <div class="work-desc">利用AI光影生成重塑产品3D质感，以“痛点-信任-转化”逻辑梳理高标准长图。</div>
-        <div class="work-foot"><span class="wtag">光影重构</span><span class="wtag">AIGC合成</span></div>
-      </div>
-    </a>
-
-    <a class="work-item" href="广告投放图1 拷贝.jpg" target="_blank">
-      <div class="work-thumb"><img src="广告投放图1 拷贝.jpg" alt="多品牌跨境广告投放 Banner"></div>
-      <div class="work-body">
-        <div class="work-num-box"><span class="work-num">08</span><span class="work-tag-main">高点击广告投放图</span></div>
-        <div class="work-title">多品牌联合 - 跨境电商 Banner 设计</div>
-        <div class="work-desc">涵盖墨镜、女鞋、珠宝等多品类，采用极具冲击力的构图与促销排版，精准吸引目标客群点击。</div>
-        <div class="work-foot"><span class="wtag">多品类驾驭</span><span class="wtag">CTR 优化</span></div>
-      </div>
-    </a>
-
-    <a class="work-item" href="亚马逊1 拷贝 2.jpg" target="_blank">
-      <div class="work-thumb"><img src="亚马逊1 拷贝 2.jpg" alt="亚马逊食品温度计 A+ 页面"></div>
-      <div class="work-body">
-        <div class="work-num-box"><span class="work-num">09</span><span class="work-tag-main">亚马逊 A+ 页面设计</span></div>
-        <div class="work-title">Digital Thermometer - 食品温度计卖点呈现</div>
-        <div class="work-desc">通过极具食欲的烤肉场景合成与防水冲洗对比，清晰拆解产品“测温快、长探针、可水洗”等核心功能。</div>
-        <div class="work-foot"><span class="wtag">场景合成</span><span class="wtag">卖点可视化</span></div>
-      </div>
-    </a>
-
-    <a class="work-item" href="亚马逊2 拷贝 2.jpg" target="_blank">
-      <div class="work-thumb"><img src="亚马逊2 拷贝 2.jpg" alt="亚马逊泳池清洁机器人 A+"></div>
-      <div class="work-body">
-        <div class="work-num-box"><span class="work-num">10</span><span class="work-tag-main">亚马逊 A+ 科技产品</span></div>
-        <div class="work-title">Cordless Pool Cleaner - 泳池机器人视觉排版</div>
-        <div class="work-desc">采用充满科技感的蓝水背书，直观对比传统凌乱软管，突出大容量电池与自动靠停的智能卖点。</div>
-        <div class="work-foot"><span class="wtag">科技感排版</span><span class="wtag">痛点对比</span></div>
-      </div>
-    </a>
-
-    <a class="work-item" href="亚马逊4 拷贝 2.jpg" target="_blank">
-      <div class="work-thumb"><img src="亚马逊4 拷贝 2.jpg" alt="亚马逊碗碟沥水架详情"></div>
-      <div class="work-body">
-        <div class="work-num-box"><span class="work-num">11</span><span class="work-tag-main">家居类目 A+ 排版</span></div>
-        <div class="work-title">Dish Drying Rack - 双层沥水架空间展示</div>
-        <div class="work-desc">详尽展示产品尺寸、智能双层设计及自动排水结构。利用透视角度充分展现产品的超大收纳容量。</div>
-        <div class="work-foot"><span class="wtag">空间透视</span><span class="wtag">信息层级梳理</span></div>
-      </div>
-    </a>
-
-    <a class="work-item" href="亚马逊5 拷贝 2.jpg" target="_blank">
-      <div class="work-thumb"><img src="亚马逊5 拷贝 2.jpg" alt="亚马逊快充充电宝 A+"></div>
-      <div class="work-body">
-        <div class="work-num-box"><span class="work-num">12</span><span class="work-tag-main">3C 数码 A+ 页面</span></div>
-        <div class="work-title">Power Bank - 大容量快充充电宝性能分解</div>
-        <div class="work-desc">通过极简的高级灰科技风，直观传递“快充对比数据”、“安全保护矩阵”与“可带上飞机”的商务便携属性。</div>
-        <div class="work-foot"><span class="wtag">3C 科技风</span><span class="wtag">数据可视化</span></div>
-      </div>
-    </a>
-
-    <a class="work-item" href="未标题-3.jpg" target="_blank">
-      <div class="work-thumb"><img src="未标题-3.jpg" alt="84消毒液爆款主图"></div>
-      <div class="work-body">
-        <div class="work-num-box"><span class="work-num">13</span><span class="work-tag-main">淘宝天猫主图</span></div>
-        <div class="work-title">84消毒液 - 居家健康场景营造</div>
-        <div class="work-desc">通过温馨的宠物/家庭背景合成与清晰的除菌卖点排版，提升点击转化。</div>
-        <div class="work-foot"><span class="wtag">场景合成</span><span class="wtag">情感营销</span></div>
-     </div>
-    </a>
-
     <a class="work-item" href="酸性清洁剂 拷贝 2.jpg" target="_blank">
-      <div class="work-thumb"><img src="酸性清洁剂 拷贝 2.jpg" alt="酸性清洁剂商务主图"></div>
+      <div class="work-thumb"><img src="酸性清洁剂 拷贝 2.jpg"></div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">14</span><span class="work-tag-main">专业级视觉主图</span></div>
-        <div class="work-title">酸性清洁剂 - 动感水流与强力去污</div>
-        <div class="work-desc">高对比度排版与动感水流元素结合，突出产品“专业级别、除垢翻新”的核心爆点。</div>
-        <div class="work-foot"><span class="wtag">版式排版</span><span class="wtag">质感精修</span></div>
+        <div class="work-num-box"><span class="work-num">13</span><span class="work-tag-main">专业级主图</span></div>
+        <div class="work-title">酸性清洁剂 - 动感去污</div>
+        <div class="work-desc">高对比排版突出专业除垢。</div>
+        <div class="work-foot"><span class="wtag">质感精修</span></div>
       </div>
     </a>
-    
     <a class="work-item" href="详情1 拷贝.jpg" target="_blank">
-      <div class="work-thumb"><img src="详情1 拷贝.jpg" alt="柠檬家私蜡质感主图"></div>
+      <div class="work-thumb"><img src="详情1 拷贝.jpg"></div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">15</span><span class="work-tag-main">溢价感质感主图</span></div>
-        <div class="work-title">柠檬家私蜡 - 暖光光影滋养质感</div>
-        <div class="work-desc">采用高级皮质家居场景背书，暖色调光影精准烘托产品调性。</div>
-        <div class="work-foot"><span class="wtag">光影合成</span><span class="wtag">质感表现</span></div>
+        <div class="work-num-box"><span class="work-num">14</span><span class="work-tag-main">溢价感主图</span></div>
+        <div class="work-title">柠檬家私蜡 - 光影滋养</div>
+        <div class="work-desc">采用高级皮质家居场景背书，暖色调光影精准烘托溢价感。</div>
+        <div class="work-foot"><span class="wtag">光影合成</span></div>
       </div>
     </a>
-
   </div>
 </section>
 
 <section id="contact">
   <div class="section-num">04</div>
   <div class="section-title">联系合作</div>
-  <div class="contact-grid fade-in">
-    <div>
-      <p class="contact-intro">寻求亚马逊 A+、国内电商主图等跨平台视觉设计合作？<br>随时欢迎随时与我联系。我们在这里<strong>开口说话</strong>。</p>
-      <div class="contact-items">
-        <div class="contact-item"><div class="ci-icon">T</div><span>18026715687</span></div>
-        <div class="contact-item"><div class="ci-icon">W</div><span>微信：JiaRu-oo</span></div>
-        <div class="contact-item"><div class="ci-icon">@</div><span>LinJiaRu_0110@163.com</span></div>
-      </div>
-    </div>
-    <div class="form">
-      <div><label>如何称呼您</label><input type="text" placeholder="您的姓名 / 公司名称"></div>
-      <div><label>联系方式</label><input type="text" placeholder="手机 / 微信 / 邮箱"></div>
-      <div><label>项目需求</label><textarea placeholder="简单描述一下您的设计需求..."></textarea></div>
-      <button class="form-btn">发送留言</button>
-    </div>
+  <p class="contact-info-text">欢迎随时联系。</p>
+  <div class="contact-links-box">
+    <div class="contact-link-item">T: 18026715687</div>
+    <div class="contact-link-item">W: Rninil</div>
+    <div class="contact-link-item">@: LinJiaRu_0110@163.com</div>
   </div>
 </section>
 
-<footer>© 2026 LIN JIARU. Crafted with Code. <br>All Rights Reserved. </footer>
+<footer>© 2026 LIN JIARU. Crafted with Code.</footer>
 
 </body>
 </html>
