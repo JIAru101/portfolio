@@ -73,17 +73,17 @@
   .exp-points-new li { font-size: 0.95rem; font-weight: 300; color: var(--ink-2); line-height: 1.7; position: relative; padding-left: 1.2rem; }
   .exp-points-new li::before { content: '·'; position: absolute; left: 0; top: -1px; font-size: 1.5rem; color: var(--ink-muted); }
 
-  /* 标题对齐优化 - 保留原有的主标题缩进 */
+  /* 标题对齐优化 */
   .section-num { font-size: 0.85rem; font-weight: 700; color: var(--grad-2); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; padding-left: 50px; }
   .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 20px; color: #111827; position: relative; display: inline-block; padding-left: 50px; }
   .section-title::after { content: ''; position: absolute; left: 50px; bottom: -8px; width: 50px; height: 4px; background: var(--accent-grad); border-radius: 2px; }
 
-  /* 作品集间距设定 - 调整为 10px */
+  /* 作品集间距设定 */
   .works-single-column { display: flex; flex-direction: column; gap: 10px; width: 100%; }
 
-  /* 新增：分类子标题专属样式 */
+  /* 分类子标题专属样式 */
   .sub-cat-wrapper { width: 100%; margin-top: 85px; margin-bottom: 15px; padding-left: 50px; }
-  .sub-cat-wrapper.retouching { padding-left: 12px; } /* 仅精修栏目单独对齐内部 Before 标签的 12px */
+  .sub-cat-wrapper.retouching { padding-left: 12px; }
   .sub-cat-num { font-size: 0.85rem; font-weight: 700; color: var(--grad-1); margin-bottom: 0.5rem; text-transform: uppercase; }
   .sub-cat-title { font-size: 1.8rem; font-weight: 700; color: #111827; position: relative; display: inline-block; }
 
@@ -221,6 +221,62 @@
     </a>
 
     <div class="sub-cat-wrapper">
+      <div class="sub-cat-num">E-Commerce</div>
+      <div class="sub-cat-title">国内电商视觉（超宝家清系列）</div>
+    </div>
+
+    <div class="works-grid-3">
+      <a class="work-item" href="画板 1 拷贝 2.jpg" target="_blank">
+        <div class="work-thumb"><img src="画板 1 拷贝 2.jpg" alt="酸性清洁剂"></div>
+        <div class="work-body">
+          <div class="work-num-box"><span class="work-num">03</span><span class="work-tag-main">专业级主图</span></div>
+          <div class="work-title">酸性清洁剂</div>
+          <div class="work-foot"><span class="wtag">深层去污</span><span class="wtag">强力瓦解</span></div>
+        </div>
+      </a>
+      <a class="work-item" href="画板 1.jpg" target="_blank">
+        <div class="work-thumb"><img src="画板 1.jpg" alt="超宝除胶剂"></div>
+        <div class="work-body">
+          <div class="work-num-box"><span class="work-num">04</span><span class="work-tag-main">卖点可视化</span></div>
+          <div class="work-title">超宝除胶剂</div>
+          <div class="work-foot"><span class="wtag">溶解深层</span><span class="wtag">车家两用</span></div>
+        </div>
+      </a>
+      <a class="work-item" href="画板 1 拷贝.jpg" target="_blank">
+        <div class="work-thumb"><img src="画板 1 拷贝.jpg" alt="超级特光蜡水"></div>
+        <div class="work-body">
+          <div class="work-num-box"><span class="work-num">05</span><span class="work-tag-main">场景背书</span></div>
+          <div class="work-title">超级特光蜡水</div>
+          <div class="work-foot"><span class="wtag">抗灰耐划</span><span class="wtag">免抛增亮</span></div>
+        </div>
+      </a>
+      <a class="work-item" href="画板 2 拷贝 3.jpg" target="_blank">
+        <div class="work-thumb"><img src="画板 2 拷贝 3.jpg" alt="静电吸尘埃剂"></div>
+        <div class="work-body">
+          <div class="work-num-box"><span class="work-num">06</span><span class="work-tag-main">痛点解决</span></div>
+          <div class="work-title">静电吸尘埃剂</div>
+          <div class="work-foot"><span class="wtag">静电吸尘</span><span class="wtag">无水清洁</span></div>
+        </div>
+      </a>
+      <a class="work-item" href="画板 2 拷贝 4.jpg" target="_blank">
+        <div class="work-thumb"><img src="画板 2 拷贝 4.jpg" alt="空气清新剂"></div>
+        <div class="work-body">
+          <div class="work-num-box"><span class="work-num">07</span><span class="work-tag-main">氛围营造</span></div>
+          <div class="work-title">空气清新剂</div>
+          <div class="work-foot"><span class="wtag">植物萃取</span><span class="wtag">自然清新</span></div>
+        </div>
+      </a>
+      <a class="work-item" href="画板 2.jpg" target="_blank">
+        <div class="work-thumb"><img src="画板 2.jpg" alt="柠檬家私蜡"></div>
+        <div class="work-body">
+          <div class="work-num-box"><span class="work-num">08</span><span class="work-tag-main">溢价感主图</span></div>
+          <div class="work-title">柠檬家私蜡</div>
+          <div class="work-foot"><span class="wtag">滋养润化</span><span class="wtag">重焕光泽</span></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="sub-cat-wrapper">
       <div class="sub-cat-num">Cross-Border</div>
       <div class="sub-cat-title">跨境出海作品</div>
     </div>
@@ -228,7 +284,7 @@
     <a class="work-item" href="广告投放图1 拷贝.jpg" target="_blank">
       <div class="work-thumb"><img src="广告投放图1 拷贝.jpg"></div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">03</span><span class="work-tag-main">高点击广告图</span></div>
+        <div class="work-num-box"><span class="work-num">09</span><span class="work-tag-main">高点击广告图</span></div>
         <div class="work-title">多品牌联合 - 跨境电商 Banner 设计</div>
         <div class="work-desc">涵盖墨镜、珠宝等，采用冲击力构图精准吸引目标客群。</div>
         <div class="work-foot"><span class="wtag">CTR 优化</span></div>
@@ -237,7 +293,7 @@
     <a class="work-item" href="亚马逊1 拷贝 2.jpg" target="_blank">
       <div class="work-thumb"><img src="亚马逊1 拷贝 2.jpg"></div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">04</span><span class="work-tag-main">亚马逊 A+ 设计</span></div>
+        <div class="work-num-box"><span class="work-num">10</span><span class="work-tag-main">亚马逊 A+ 设计</span></div>
         <div class="work-title">食品温度计 - 卖点呈现</div>
         <div class="work-desc">场景合成拆解核心功能。</div>
         <div class="work-foot"><span class="wtag">卖点可视化</span></div>
@@ -246,7 +302,7 @@
     <a class="work-item" href="亚马逊2 拷贝 2.jpg" target="_blank">
       <div class="work-thumb"><img src="亚马逊2 拷贝 2.jpg"></div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">05</span><span class="work-tag-main">A+ 科技产品</span></div>
+        <div class="work-num-box"><span class="work-num">11</span><span class="work-tag-main">A+ 科技产品</span></div>
         <div class="work-title">泳池机器人 - 视觉排版</div>
         <div class="work-desc">科技感背书与智能卖点。</div>
         <div class="work-foot"><span class="wtag">痛点对比</span></div>
@@ -255,7 +311,7 @@
     <a class="work-item" href="亚马逊4 拷贝 2.jpg" target="_blank">
       <div class="work-thumb"><img src="亚马逊4 拷贝 2.jpg"></div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">06</span><span class="work-tag-main">家居类 A+</span></div>
+        <div class="work-num-box"><span class="work-num">12</span><span class="work-tag-main">家居类 A+</span></div>
         <div class="work-title">双层沥水架 - 空间展示</div>
         <div class="work-desc">透视角度展现大容量。</div>
         <div class="work-foot"><span class="wtag">层级梳理</span></div>
@@ -264,7 +320,7 @@
     <a class="work-item" href="亚马逊5 拷贝 2.jpg" target="_blank">
       <div class="work-thumb"><img src="亚马逊5 拷贝 2.jpg"></div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">07</span><span class="work-tag-main">3C 数码 A+</span></div>
+        <div class="work-num-box"><span class="work-num">13</span><span class="work-tag-main">3C 数码 A+</span></div>
         <div class="work-title">Power Bank - 大容量快充充电宝性能分解</div>
         <div class="work-desc">极简灰科技风呈现数据。</div>
         <div class="work-foot"><span class="wtag">数据可视化</span></div>
@@ -288,7 +344,7 @@
         </div>
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">08</span><span class="work-tag-main">3C 数码材质精修</span></div>
+        <div class="work-num-box"><span class="work-num">14</span><span class="work-tag-main">3C 数码材质精修</span></div>
         <div class="work-title">电竞鼠标 - 材质强化与光影重构</div>
         <div class="work-desc">修复实拍中暗沉且粗糙的塑料材质缺陷，利用材质分离与光影重构技术，打造出细腻的金属光泽与电竞科技感。</div>
         <div class="work-foot"><span class="wtag">材质打磨</span><span class="wtag">光影重构</span></div>
@@ -307,7 +363,7 @@
         </div>
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">09</span><span class="work-tag-main">美妆护肤质感塑造</span></div>
+        <div class="work-num-box"><span class="work-num">15</span><span class="work-tag-main">美妆护肤质感塑造</span></div>
         <div class="work-title">美白护手霜 - 剔透感与高级氛围调色</div>
         <div class="work-desc">修正原图偏暗发灰的色调，强化管身的高级磨砂质感，营造专柜级的高级商业氛围。</div>
         <div class="work-foot"><span class="wtag">色彩校准</span><span class="wtag">材质提亮</span></div>
@@ -326,7 +382,7 @@
         </div>
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">10</span><span class="work-tag-main">玻璃液体材质精修</span></div>
+        <div class="work-num-box"><span class="work-num">16</span><span class="work-tag-main">玻璃液体材质精修</span></div>
         <div class="work-title">电热蚊香液 - 玻璃通透感重塑</div>
         <div class="work-desc">解决实拍玻璃瓶身高光杂乱、内部液体浑浊沉闷的痛点。呈现极致干净、通透的视觉体验。</div>
         <div class="work-foot"><span class="wtag">液体重绘</span><span class="wtag">透视校正</span></div>
@@ -345,7 +401,7 @@
         </div>
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">11</span><span class="work-tag-main">家居百货精修抠图</span></div>
+        <div class="work-num-box"><span class="work-num">17</span><span class="work-tag-main">家居百货精修抠图</span></div>
         <div class="work-title">商用尘推 - 结构校准与杂质剥离</div>
         <div class="work-desc">从极其杂乱的实拍背景中完美剥离主体，彻底校准产品透视形变，输出干净整洁的电商展示白底图。</div>
         <div class="work-foot"><span class="wtag">复杂抠图</span><span class="wtag">形变校准</span></div>
@@ -364,68 +420,13 @@
         </div>
       </div>
       <div class="work-body">
-        <div class="work-num-box"><span class="work-num">12</span><span class="work-tag-main">珠宝首饰精修</span></div>
+        <div class="work-num-box"><span class="work-num">18</span><span class="work-tag-main">珠宝首饰精修</span></div>
         <div class="work-title">玫瑰金镶钻戒指 - 质感提亮与光影重构</div>
         <div class="work-desc">清除原图暗沉发灰的色调与杂乱反光，强化排钻的通透闪耀感，重塑玫瑰金独有的细腻光泽与立体结构。</div>
         <div class="work-foot"><span class="wtag">材质打磨</span><span class="wtag">光影重构</span></div>
       </div>
     </div>
 
-    <div class="sub-cat-wrapper">
-      <div class="sub-cat-num">E-Commerce</div>
-      <div class="sub-cat-title">国内电商视觉（超宝家清系列）</div>
-    </div>
-
-    <div class="works-grid-3">
-      <a class="work-item" href="画板 1 拷贝 2.jpg" target="_blank">
-        <div class="work-thumb"><img src="画板 1 拷贝 2.jpg" alt="酸性清洁剂"></div>
-        <div class="work-body">
-          <div class="work-num-box"><span class="work-num">13</span><span class="work-tag-main">专业级主图</span></div>
-          <div class="work-title">酸性清洁剂</div>
-          <div class="work-foot"><span class="wtag">深层去污</span><span class="wtag">强力瓦解</span></div>
-        </div>
-      </a>
-      <a class="work-item" href="画板 1.jpg" target="_blank">
-        <div class="work-thumb"><img src="画板 1.jpg" alt="超宝除胶剂"></div>
-        <div class="work-body">
-          <div class="work-num-box"><span class="work-num">14</span><span class="work-tag-main">卖点可视化</span></div>
-          <div class="work-title">超宝除胶剂</div>
-          <div class="work-foot"><span class="wtag">溶解深层</span><span class="wtag">车家两用</span></div>
-        </div>
-      </a>
-      <a class="work-item" href="画板 1 拷贝.jpg" target="_blank">
-        <div class="work-thumb"><img src="画板 1 拷贝.jpg" alt="超级特光蜡水"></div>
-        <div class="work-body">
-          <div class="work-num-box"><span class="work-num">15</span><span class="work-tag-main">场景背书</span></div>
-          <div class="work-title">超级特光蜡水</div>
-          <div class="work-foot"><span class="wtag">抗灰耐划</span><span class="wtag">免抛增亮</span></div>
-        </div>
-      </a>
-      <a class="work-item" href="画板 2 拷贝 3.jpg" target="_blank">
-        <div class="work-thumb"><img src="画板 2 拷贝 3.jpg" alt="静电吸尘埃剂"></div>
-        <div class="work-body">
-          <div class="work-num-box"><span class="work-num">16</span><span class="work-tag-main">痛点解决</span></div>
-          <div class="work-title">静电吸尘埃剂</div>
-          <div class="work-foot"><span class="wtag">静电吸尘</span><span class="wtag">无水清洁</span></div>
-        </div>
-      </a>
-      <a class="work-item" href="画板 2 拷贝 4.jpg" target="_blank">
-        <div class="work-thumb"><img src="画板 2 拷贝 4.jpg" alt="空气清新剂"></div>
-        <div class="work-body">
-          <div class="work-num-box"><span class="work-num">17</span><span class="work-tag-main">氛围营造</span></div>
-          <div class="work-title">空气清新剂</div>
-          <div class="work-foot"><span class="wtag">植物萃取</span><span class="wtag">自然清新</span></div>
-        </div>
-      </a>
-      <a class="work-item" href="画板 2.jpg" target="_blank">
-        <div class="work-thumb"><img src="画板 2.jpg" alt="柠檬家私蜡"></div>
-        <div class="work-body">
-          <div class="work-num-box"><span class="work-num">18</span><span class="work-tag-main">溢价感主图</span></div>
-          <div class="work-title">柠檬家私蜡</div>
-          <div class="work-foot"><span class="wtag">滋养润化</span><span class="wtag">重焕光泽</span></div>
-        </div>
-      </a>
-    </div>
   </div>
 </section>
 
